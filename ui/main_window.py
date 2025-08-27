@@ -2,16 +2,15 @@
 import tkinter as tk
 # used for welcome labels
 from ui.labels import H1Label, H6Label
+from ui.buttons import LargeButton
 
 
 class MainWindow:
     # root window properties
     def __init__(self):
         self.root = tk.Tk()
-        #  
-        self.bg = "#222222"
-        self.root.configure(background = self.bg)
-        width, height = 400, 600
+        self.root.configure(background = "#222222")
+        width, height = 300, 400
         # get height and width of screen
         window_height = self.root.winfo_screenheight()
         window_width = self.root.winfo_screenwidth()
@@ -21,11 +20,23 @@ class MainWindow:
         self.root.geometry(f"{width}x{height}+{x}+{y}")
         self.root.title("Quick DB")
         
-        welcome = H1Label(self.root, text = "Welcome")
-        welcome.pack(pady = (45, 0))
+        # main window labels
+        welcome_label = H1Label(self.root, text = "Welcome")
+        welcome_label.pack(pady = (45, 0))
         
-        choose_file = H6Label(self.root, text = "Choose a file")
-        choose_file.pack(pady = (0, 0))
+        choose_file_label = H6Label(self.root, text = "Choose a file")
+        choose_file_label.pack(pady = (0, 0))
+        
+        # main window buttons
+        csv_button = LargeButton(self.root, text = ".csv")
+        csv_button.pack(pady = (50,0))
+        
+        excel_button = LargeButton(self.root, text = ".xlsx")
+        excel_button.pack(pady = (25, 0))
+        
+        db_button = LargeButton(self.root, text = ".db")
+        db_button.pack(pady = (25, 0))
+
     # start the root window
     def run(self):
         self.root.mainloop()
