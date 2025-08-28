@@ -3,6 +3,8 @@ import tkinter as tk
 # used for welcome labels
 from ui.labels import H1Label, H6Label
 from ui.buttons import LargeButton
+# used to handle button functions
+from ui.handlers import handle_csv, handle_excel, handle_db
 
 
 class MainWindow:
@@ -10,7 +12,7 @@ class MainWindow:
     def __init__(self):
         self.root = tk.Tk()
         self.root.configure(background = "#222222")
-        width, height = 300, 400
+        width, height = 300, 450
         # get height and width of screen
         window_height = self.root.winfo_screenheight()
         window_width = self.root.winfo_screenwidth()
@@ -28,13 +30,13 @@ class MainWindow:
         choose_file_label.pack(pady = (0, 0))
         
         # main window buttons
-        csv_button = LargeButton(self.root, text = ".csv")
-        csv_button.pack(pady = (50,0))
+        csv_button = LargeButton(self.root, text = ".csv", command = handle_csv)
+        csv_button.pack(pady = (45,0))
         
-        excel_button = LargeButton(self.root, text = ".xlsx")
+        excel_button = LargeButton(self.root, text = ".xlsx", command = handle_excel)
         excel_button.pack(pady = (25, 0))
         
-        db_button = LargeButton(self.root, text = ".db")
+        db_button = LargeButton(self.root, text = ".db", command = handle_db)
         db_button.pack(pady = (25, 0))
 
     # start the root window
